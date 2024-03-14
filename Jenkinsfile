@@ -8,13 +8,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean install'             }
+                bat 'mvn clean install'
+            }
         }
 
         stage('Code Coverage Report') {
             steps {
-                bat 'mvn jacoco:prepare-agent test jacoco:report' 
-                archiveArtifacts artifacts: '**/target/site/jacoco/*, **/target/*.jar', fingerprint: true 
+                bat 'mvn jacoco:prepare-agent test jacoco:report'
+                archiveArtifacts artifacts: '**/target/site/jacoco/*, **/target/*.jar', fingerprint: true
             }
         }
     }
